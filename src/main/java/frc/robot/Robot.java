@@ -68,10 +68,10 @@ public class Robot extends TimedRobot {
 
   public static ResetSingleMotorEncoder hoodReset;
 
-  public static NerdySparkMax leftMaster;
-  public static NerdySparkMax rightMaster;
-  public static NerdySparkMax leftFollower;
-  public static NerdySparkMax rightFollower;
+  //public static NerdySparkMax leftMaster;
+  //public static NerdySparkMax rightMaster;
+  //public static NerdySparkMax leftFollower;
+  //public static NerdySparkMax rightFollower;
 
   public static XboxOI xbox_oi;
   public static Drive drive;
