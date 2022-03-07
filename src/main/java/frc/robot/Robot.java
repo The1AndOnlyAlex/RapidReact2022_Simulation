@@ -199,7 +199,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
-    SmartDashboard.putNumber("LMVolt", getLeftMasterVel());
+    //SmartDashboard.putNumber("LMVolt", getLeftMasterVel());
   }
 
   public static void runResetCommand() {
@@ -209,7 +209,7 @@ public class Robot extends TimedRobot {
   }
 
   public void reportToSmartDashboard() {
-    SmartDashboard.putNumber("LMVoltage", getLeftMasterVoltage());
+    /*SmartDashboard.putNumber("LMVoltage", getLeftMasterVoltage());
     SmartDashboard.putNumber("LMCurrent", getLeftMasterCurrent());
     SmartDashboard.putNumber("LMVelocity", getLeftMasterVel());
     SmartDashboard.putNumber("LMPosition", getLeftMasterPos());
@@ -224,7 +224,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("RFVoltage", getRightFollowerVoltage());
     SmartDashboard.putNumber("RFCurrent", getRightFollowerCurrent());
     SmartDashboard.putNumber("RFVelocity", getRightFollowerVel());
-    SmartDashboard.putNumber("RFPosition", getRightFollowerPos());
+    SmartDashboard.putNumber("RFPosition", getRightFollowerPos());*/
     SmartDashboard.putNumber("EVoltage", getElevatorVoltage());
     SmartDashboard.putNumber("ECurrent", getElevatorCurrent());
     SmartDashboard.putNumber("EVelocity", getElevatorVel());
@@ -247,7 +247,7 @@ public class Robot extends TimedRobot {
     m_nav.reset();
   }
 
-  public double getLeftMasterVoltage() {
+  /*public double getLeftMasterVoltage() {
     return leftMaster.getVoltage();
   }
 
@@ -309,7 +309,7 @@ public class Robot extends TimedRobot {
 
   public double getRightFollowerPos() {
     return rightFollower.getPosition();
-  }
+  }*/
 
   public double getElevatorVoltage() {
     return elevator.getVoltage();
@@ -371,7 +371,7 @@ public class Robot extends TimedRobot {
     return m_nav.getWorldLinearAccelZ();
   }
 
-  public void startLog(){
+  /*public void startLog(){
     File logFolder1 = new File(m_filePath1);
 	  File logFolder2 = new File(m_filePath2);
     Path filePrefix = Paths.get("");
@@ -453,5 +453,5 @@ public class Robot extends TimedRobot {
       }
     }
   }
-
+*/
 }
