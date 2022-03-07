@@ -72,7 +72,7 @@ public class Drivetrain extends AbstractDrivetrain {
 	public DifferentialDriveKinematics m_kinematics;
 	private DifferentialDriveOdometry m_odometry;
 	private SimpleMotorFeedforward m_leftFeedforward, m_rightFeedforward;
-	public Field2d m_field = new Field2d();
+	private Field2d m_field = new Field2d();
 
 	public double simLeftVolt, simRightVolt;
 	
