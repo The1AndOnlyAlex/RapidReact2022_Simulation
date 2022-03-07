@@ -20,6 +20,8 @@ import edu.wpi.first.hal.SimDouble;
 import edu.wpi.first.hal.simulation.SimDeviceDataJNI;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.simulation.AnalogGyroSim;
+import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.math.VecBuilder;
@@ -27,9 +29,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
-import edu.wpi.first.wpilibj.simulation.AnalogGyroSim;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
-import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
@@ -40,6 +40,9 @@ public class Drive extends ShiftingDrivetrain {
    * Creates a new Drive.
    */
   private DifferentialDrivetrainSim m_driveSim;
+  
+  private AnalogGyro m_gyro = new AnalogGyro(0); // ALEX D - TBC CHANNEL NUMBER
+  private final AnalogGyroSim m_gyroSim = new AnalogGyroSim(m_gyro);
 
   private final Encoder m_leftEncoder = new Encoder(0, 1);
   private final Encoder m_rightEncoder = new Encoder(2, 3);
@@ -47,9 +50,6 @@ public class Drive extends ShiftingDrivetrain {
   private EncoderSim m_rightEncoderSim = new EncoderSim(m_rightEncoder);
   //private Field2d m_field;
 
-  private AnalogGyro m_gyro = new AnalogGyro(0); // ALEX D - TBC CHANNEL NUMBER
-  private final AnalogGyroSim m_gyroSim = new AnalogGyroSim(m_gyro);
-  
 
   // Drive for Thomas
   // private static NerdyFalcon leftMaster = new NerdyFalcon(RobotMap.kLeftMasterID);
@@ -94,7 +94,7 @@ public class Drive extends ShiftingDrivetrain {
      resetEncoders();
      
      //m_field = new Field2d();
-     SmartDashboard.putData("Field", m_field);
+     //SmartDashboard.putData("Field", m_field);
 
      if(RobotBase.isSimulation()){
       m_driveSim = new DifferentialDrivetrainSim(
@@ -131,15 +131,16 @@ public class Drive extends ShiftingDrivetrain {
     SmartDashboard.putNumber("Sim Pose X Meters", m_driveSim.getPose().getX());
     SmartDashboard.putNumber("Sim Pose Y Meters", m_driveSim.getPose().getY());
     SmartDashboard.putNumber("Sim heading", m_driveSim.getPose().getRotation().getDegrees());
-    m_field.setRobotPose(m_driveSim.getPose());
+    //m_field.setRobotPose(m_driveSim.getPose());
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    super.updateOdometry();
+    //super.updateOdometry(); removed it since it's been in super.periodic() already. Alex
     super.reportToSmartDashboard();
-    m_field.setRobotPose(getPose2d());
+    //m_field.setRobotPose(getPose2d());
+    super.periodic();
   }
 }
 
